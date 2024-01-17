@@ -20,7 +20,7 @@ def home():
     return "Minha primeira API."
 
 @app.route('/sentimento/<frase>')
-@basic_auth.required
+#@basic_auth.required
 def sentimento(frase):
     tb = TextBlob(frase)
     tb_en = tb.translate(to='en')
@@ -28,7 +28,6 @@ def sentimento(frase):
     return "polaridade: {}".format(polaridade)
 
 @app.route('/cotacao/', methods=['POST'])
-@basic_auth.required
 def cotacao():
     dados = request.get_json()
     dados_input = [dados[col] for col in colunas]
